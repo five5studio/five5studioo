@@ -107,6 +107,7 @@ const NewReleases: React.FC<NewReleasesProps> = ({ isSubscribed = false }) => {
         {/* Other New Releases */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
+            { title: 'New Human Creation', type: 'Human', image: 'https://images.pexels.com/photos/1117132/pexels-photo-1117132.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop', videoUrl: 'https://www.youtube.com/watch?v=tGHMBfC7z0M' },
             { title: 'Neural Symphony', type: 'AI', image: 'https://images.pexels.com/photos/2832034/pexels-photo-2832034.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop' },
             { title: 'Human Stories', type: 'Human', image: 'https://images.pexels.com/photos/1117132/pexels-photo-1117132.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop' },
             { title: 'Digital Dreams', type: 'AI', image: 'https://images.pexels.com/photos/3861972/pexels-photo-3861972.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop' },
@@ -123,7 +124,19 @@ const NewReleases: React.FC<NewReleasesProps> = ({ isSubscribed = false }) => {
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/60 transition-colors duration-300" />
                 
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <button className="bg-white text-black w-12 h-12 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                  <button 
+                    onClick={() => {
+                      if (film.videoUrl && isSubscribed) {
+                        // This would open the video player with the YouTube video
+                        alert(`Playing "${film.title}" - Video will play embedded on your site.`);
+                      } else if (film.videoUrl && !isSubscribed) {
+                        alert(`Subscribe to Five Studio Premium for just €2.50/month to watch "${film.title}" and all other films!`);
+                      } else {
+                        alert(`Playing "${film.title}" - This would open the video player in a real application.`);
+                      }
+                    }}
+                    className="bg-white text-black w-12 h-12 rounded-full flex items-center justify-center hover:scale-110 transition-transform"
+                  >
                     <Play className="w-4 h-4 ml-1" />
                   </button>
                 </div>
