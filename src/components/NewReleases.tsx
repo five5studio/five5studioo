@@ -79,11 +79,7 @@ const NewReleases: React.FC<NewReleasesProps> = ({ isSubscribed = false }) => {
               </div>
               
               <p className="text-xl text-gray-300 leading-relaxed mb-8 max-w-3xl mx-auto">
-                Follow the mesmerizing journey of a young woman lost in the labyrinthine canals of Venice. 
-                As she wanders through the ancient city's mysterious waterways, she discovers a magnificent 
-                spaceship that beckons her aboard. What begins as an escape from earthly confusion transforms 
-                into an extraordinary voyage through the cosmos, where Venice's timeless beauty merges 
-                with the infinite wonders of space.
+                A young woman lost in Venice's canals discovers a spaceship that takes her on an extraordinary voyage through the cosmos.
               </p>
               
               <div className="flex flex-wrap items-center justify-center gap-4">
