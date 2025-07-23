@@ -103,7 +103,7 @@ const NewReleases: React.FC<NewReleasesProps> = ({ isSubscribed = false }) => {
         {/* Other New Releases */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-            { title: 'New Human Creation', type: 'Human', image: 'https://images.pexels.com/photos/1117132/pexels-photo-1117132.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop', videoUrl: 'https://www.youtube.com/watch?v=tGHMBfC7z0M' },
+            { title: 'Venice Journey', type: 'Human', image: 'https://images.pexels.com/photos/1117132/pexels-photo-1117132.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop', videoUrl: 'https://www.youtube.com/watch?v=tGHMBfC7z0M' },
             { title: 'Neural Symphony', type: 'AI', image: 'https://images.pexels.com/photos/2832034/pexels-photo-2832034.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop' },
             { title: 'Human Stories', type: 'Human', image: 'https://images.pexels.com/photos/1117132/pexels-photo-1117132.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop' },
             { title: 'Digital Dreams', type: 'AI', image: 'https://images.pexels.com/photos/3861972/pexels-photo-3861972.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop' },

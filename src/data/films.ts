@@ -107,8 +107,8 @@ export const aiFilms: Film[] = [
 
 export const humanFilms: Film[] = [
   {
-    id: 'human-new-release',
-    title: 'New Human Creation',
+    id: 'human-venice-journey',
+    title: 'Venice Journey',
     image: 'https://images.pexels.com/photos/1117132/pexels-photo-1117132.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
     year: '2024',
     rating: 9.2,
