@@ -13,20 +13,23 @@ interface FilmCardProps {
   isSubscribed?: boolean;
   onPlay?: () => void;
   videoUrl?: string;
+  isFree?: boolean;
+  description?: string;
+  director?: string;
 }
 
-const FilmCard: React.FC<FilmCardProps> = ({ title, image, year, rating, duration, type, genre, isSubscribed = false, onPlay, videoUrl }) => {
+const FilmCard: React.FC<FilmCardProps> = ({ title, image, year, rating, duration, type, genre, isSubscribed = false, onPlay, videoUrl, isFree = false, description, director }) => {
   const [isVideoPlayerOpen, setIsVideoPlayerOpen] = React.useState(false);
 
   const handlePlayClick = () => {
     if (onPlay) {
       onPlay();
-    } else if (videoUrl && isSubscribed) {
+    } else if (videoUrl && (isSubscribed || isFree)) {
       // Open video player modal
       setIsVideoPlayerOpen(true);
-    } else if (videoUrl && !isSubscribed) {
+    } else if (videoUrl && !isSubscribed && !isFree) {
       alert(`Subscribe to Five Studio Premium for just €2.50/month to watch "${title}" and all other films!`);
-    } else if (!isSubscribed) {
+    } else if (!isSubscribed && !isFree) {
       alert(`Subscribe to Five Studio Premium for just €2.50/month to watch "${title}" and all other films!`);
     } else {
       alert(`Playing "${title}" - This would open the video player in a real application.`);
@@ -70,6 +73,15 @@ const FilmCard: React.FC<FilmCardProps> = ({ title, image, year, rating, duratio
             )}
           </div>
         </div>
+        
+        {/* Free Badge */}
+        {isFree && (
+          <div className="absolute top-3 right-3">
+            <div className="bg-green-600 text-white px-2 py-1 rounded-full text-xs font-semibold">
+              FREE
+            </div>
+          </div>
+        )}
       </div>
       
       {/* Content */}
@@ -89,6 +101,14 @@ const FilmCard: React.FC<FilmCardProps> = ({ title, image, year, rating, duratio
         </div>
         
         <div className="text-sm text-gray-300">{genre}</div>
+        
+        {description && (
+          <p className="text-xs text-gray-400 mt-2 line-clamp-2">{description}</p>
+        )}
+        
+        {director && (
+          <p className="text-xs text-purple-300 mt-1">by {director}</p>
+        )}
       </div>
     </div>
       

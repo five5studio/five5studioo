@@ -4,7 +4,7 @@ import UserModal from './UserModal';
 import SubscriptionModal from './SubscriptionModal';
 
 interface HeaderProps {
-  onCategoryChange: (category: 'home' | 'ai' | 'human' | 'shorts') => void;
+  onCategoryChange: (category: 'home' | 'ai' | 'human' | 'shorts' | 'free') => void;
   activeCategory: string;
   isSubscribed: boolean;
   onSubscriptionChange: (subscribed: boolean) => void;
@@ -92,6 +92,16 @@ const Header: React.FC<HeaderProps> = ({ onCategoryChange, activeCategory, isSub
               className={`transition-colors text-sm font-medium ${activeCategory === 'shorts' ? 'text-purple-400' : 'text-white hover:text-purple-400'}`}
             >
               Shorts
+            </button>
+            <button 
+              onClick={() => handleNavClick('free')}
+              className={`transition-colors text-sm font-medium px-3 py-1 rounded-full border ${
+                activeCategory === 'free' 
+                  ? 'text-green-400 border-green-400 bg-green-400/10' 
+                  : 'text-white hover:text-green-400 border-green-500/30 hover:border-green-400 hover:bg-green-400/5'
+              }`}
+            >
+              Free Films
             </button>
           </nav>
 
@@ -185,6 +195,16 @@ const Header: React.FC<HeaderProps> = ({ onCategoryChange, activeCategory, isSub
                 className={`text-left transition-colors text-sm font-medium ${activeCategory === 'shorts' ? 'text-purple-400' : 'text-white hover:text-purple-400'}`}
               >
                 Shorts
+              </button>
+              <button 
+                onClick={() => handleNavClick('free')}
+                className={`text-left transition-colors text-sm font-medium px-3 py-2 rounded-lg ${
+                  activeCategory === 'free' 
+                    ? 'text-green-400 bg-green-400/10' 
+                    : 'text-white hover:text-green-400 hover:bg-green-400/5'
+                }`}
+              >
+                Free Films
               </button>
             </nav>
           </div>

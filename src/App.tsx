@@ -9,9 +9,9 @@ import Footer from './components/Footer';
 import { AIFilmsPage, HumanFilmsPage, ShortFilmsPage, CollectionsPage } from './components/ContentPages';
 import { HelpCenterPage, ContactUsPage, PrivacyPolicyPage, TermsOfServicePage } from './components/SupportPages';
 import { ProfileSettingsPage, BillingPaymentsPage, AccountSettingsPage } from './components/UserPages';
-import { aiFilms, humanFilms, shortFilms } from './data/films';
+import { aiFilms, humanFilms, shortFilms, freeFilms } from './data/films';
 
-type ViewType = 'home' | 'ai' | 'human' | 'shorts' | 'ai-films' | 'human-films' | 'short-films' | 'collections' | 'help-center' | 'contact-us' | 'privacy-policy' | 'terms-of-service' | 'profile-settings' | 'billing-payments' | 'account-settings';
+type ViewType = 'home' | 'ai' | 'human' | 'shorts' | 'free' | 'ai-films' | 'human-films' | 'short-films' | 'collections' | 'help-center' | 'contact-us' | 'privacy-policy' | 'terms-of-service' | 'profile-settings' | 'billing-payments' | 'account-settings';
 
 function App() {
   const [currentView, setCurrentView] = useState<ViewType>('home');
@@ -55,6 +55,15 @@ function App() {
             title="Short Films"
             films={shortFilms}
             isSubscribed={isSubscribed}
+            onBack={handleBackToHome}
+          />
+        );
+      case 'free':
+        return (
+          <CategoryView
+            title="Free Films"
+            films={freeFilms}
+            isSubscribed={true} // Always allow access to free films
             onBack={handleBackToHome}
           />
         );
@@ -107,6 +116,13 @@ function App() {
                 type="human"
                 isSubscribed={isSubscribed}
                 onViewAll={() => setCurrentView('shorts')}
+              />
+              <FilmSection 
+                title="Free Films" 
+                films={freeFilms.slice(0, 4)} 
+                type="human"
+                isSubscribed={true} // Always allow access to free films
+                onViewAll={() => setCurrentView('free')}
               />
             </div>
           </main>

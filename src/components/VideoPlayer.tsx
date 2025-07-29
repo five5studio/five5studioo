@@ -19,7 +19,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ isOpen, onClose, videoUrl, ti
       ? url.split('youtu.be/')[1].split('?')[0]
       : url.split('v=')[1]?.split('&')[0];
     
-    return `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+    return `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&controls=1&showinfo=0`;
   };
 
   const toggleFullscreen = () => {

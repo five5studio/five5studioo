@@ -103,6 +103,14 @@ const NewReleases: React.FC<NewReleasesProps> = ({ isSubscribed = false }) => {
         {/* Other New Releases */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
+            { 
+              title: 'Island Encounters', 
+              type: 'Human', 
+              image: '/animated-short-thumbnail.jpg', 
+              videoUrl: 'https://www.youtube.com/watch?v=tGHMBfC7z0M',
+              isFree: true,
+              description: 'Animated Short Film by Max Mörtl & Robert Löbel'
+            },
             { title: 'Venice Journey', type: 'Human', image: 'https://images.pexels.com/photos/1117132/pexels-photo-1117132.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop', videoUrl: 'https://www.youtube.com/watch?v=tGHMBfC7z0M' },
             { title: 'Neural Symphony', type: 'AI', image: 'https://images.pexels.com/photos/2832034/pexels-photo-2832034.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop' },
             { title: 'Human Stories', type: 'Human', image: 'https://images.pexels.com/photos/1117132/pexels-photo-1117132.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop' },
@@ -122,10 +130,10 @@ const NewReleases: React.FC<NewReleasesProps> = ({ isSubscribed = false }) => {
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <button 
                     onClick={() => {
-                      if (film.videoUrl && isSubscribed) {
+                      if (film.videoUrl && (isSubscribed || film.isFree)) {
                         // This would open the video player with the YouTube video
                         alert(`Playing "${film.title}" - Video will play embedded on your site.`);
-                      } else if (film.videoUrl && !isSubscribed) {
+                      } else if (film.videoUrl && !isSubscribed && !film.isFree) {
                         alert(`Subscribe to Five Studio Premium for just €2.50/month to watch "${film.title}" and all other films!`);
                       } else {
                         alert(`Playing "${film.title}" - This would open the video player in a real application.`);
@@ -150,7 +158,15 @@ const NewReleases: React.FC<NewReleasesProps> = ({ isSubscribed = false }) => {
               
               <div className="p-4">
                 <h4 className="text-white font-semibold text-lg">{film.title}</h4>
-                <p className="text-gray-400 text-sm">Just Released</p>
+                <p className="text-gray-400 text-sm">
+                  {film.isFree ? 'Free to Watch' : 'Just Released'}
+                  {film.description && <span className="block mt-1 text-xs">{film.description}</span>}
+                </p>
+                {film.isFree && (
+                  <div className="bg-green-600 text-white px-2 py-1 rounded-full text-xs font-semibold ml-2">
+                    FREE
+                  </div>
+                )}
               </div>
             </div>
           ))}

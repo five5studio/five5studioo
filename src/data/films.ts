@@ -8,6 +8,9 @@ export interface Film {
   type: 'ai' | 'human';
   genre: string;
   videoUrl?: string;
+  isFree?: boolean;
+  description?: string;
+  director?: string;
 }
 
 export const aiFilms: Film[] = [
@@ -199,7 +202,63 @@ export const humanFilms: Film[] = [
   }
 ];
 
+// Free films that don't require subscription
+export const freeFilms: Film[] = [
+  {
+    id: 'free-animated-island',
+    title: 'Island Encounters',
+    image: '/animated-short-thumbnail.jpg',
+    year: '2024',
+    rating: 8.9,
+    duration: '8 min',
+    type: 'human',
+    genre: 'Animation',
+    videoUrl: 'https://www.youtube.com/watch?v=tGHMBfC7z0M',
+    isFree: true,
+    description: 'On a small island, a bunch of exotic creatures run across each other.',
+    director: 'Max Mörtl & Robert Löbel'
+  },
+  {
+    id: 'free-ai-demo',
+    title: 'AI Creative Process',
+    image: 'https://images.pexels.com/photos/3861972/pexels-photo-3861972.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
+    year: '2024',
+    rating: 8.2,
+    duration: '12 min',
+    type: 'ai',
+    genre: 'Documentary',
+    isFree: true,
+    description: 'Explore how artificial intelligence creates compelling visual narratives.'
+  },
+  {
+    id: 'free-human-craft',
+    title: 'The Art of Storytelling',
+    image: 'https://images.pexels.com/photos/2681319/pexels-photo-2681319.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
+    year: '2024',
+    rating: 8.7,
+    duration: '15 min',
+    type: 'human',
+    genre: 'Documentary',
+    isFree: true,
+    description: 'Behind the scenes with human filmmakers crafting authentic stories.'
+  }
+];
+
 export const shortFilms: Film[] = [
+  {
+    id: 'short-animated-island',
+    title: 'Island Encounters',
+    image: '/animated-short-thumbnail.jpg',
+    year: '2024',
+    rating: 8.9,
+    duration: '8 min',
+    type: 'human',
+    genre: 'Animation',
+    videoUrl: 'https://www.youtube.com/watch?v=tGHMBfC7z0M',
+    isFree: true,
+    description: 'On a small island, a bunch of exotic creatures run across each other.',
+    director: 'Max Mörtl & Robert Löbel'
+  },
   {
     id: 'short-1',
     title: 'Electric Memories',
