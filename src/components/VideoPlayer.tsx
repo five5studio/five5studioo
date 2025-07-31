@@ -15,11 +15,23 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ isOpen, onClose, videoUrl, ti
 
   // Convert YouTube URL to embed format
   const getEmbedUrl = (url: string) => {
-    const videoId = url.includes('youtu.be/') 
-      ? url.split('youtu.be/')[1].split('?')[0]
-      : url.split('v=')[1]?.split('&')[0];
+    // Handle Vimeo URLs
+    if (url.includes('vimeo.com')) {
+      const videoId = url.split('vimeo.com/')[1].split('?')[0];
+      return `https://player.vimeo.com/video/${videoId}?autoplay=1&title=0&byline=0&portrait=0`;
+    }
     
-    return `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&controls=1&showinfo=0`;
+    // Handle YouTube URLs
+    if (url.includes('youtube.com') || url.includes('youtu.be')) {
+      const videoId = url.includes('youtu.be/') 
+        ? url.split('youtu.be/')[1].split('?')[0]
+        : url.split('v=')[1]?.split('&')[0];
+      
+      return `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&controls=1&showinfo=0`;
+    }
+    
+    // Fallback for other URLs
+    return url;
   };
 
   const toggleFullscreen = () => {

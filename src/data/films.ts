@@ -23,7 +23,7 @@ export const aiFilms: Film[] = [
     duration: '4 min',
     type: 'ai',
     genre: 'Music Video',
-    videoUrl: 'https://youtu.be/example-astrade-video'
+    videoUrl: 'https://vimeo.com/1106106331'
   },
   {
     id: 'ai-0',
