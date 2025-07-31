@@ -1,20 +1,24 @@
 import React from 'react';
 import { Play, Star, Clock, Sparkles } from 'lucide-react';
+import VideoPlayer from './VideoPlayer';
 
 interface NewReleasesProps {
   isSubscribed?: boolean;
 }
 
 const NewReleases: React.FC<NewReleasesProps> = ({ isSubscribed = false }) => {
+  const [isVideoPlayerOpen, setIsVideoPlayerOpen] = React.useState(false);
+
   const handlePlayAstrade = () => {
     if (isSubscribed) {
-      alert('Playing ASTRADE - This would open the video player in a real application.');
+      setIsVideoPlayerOpen(true);
     } else {
       alert('Subscribe to Five Studio Premium for just €2.50/month to watch "ASTRADE" and all other films!');
     }
   };
 
   return (
+    <>
     <section className="py-16 bg-gradient-to-b from-black via-purple-900/10 to-black">
       <div className="container mx-auto px-4 lg:px-6">
         <div className="flex items-center space-x-3 mb-8">
@@ -173,6 +177,15 @@ const NewReleases: React.FC<NewReleasesProps> = ({ isSubscribed = false }) => {
         </div>
       </div>
     </section>
+    
+    {/* Video Player Modal */}
+    <VideoPlayer
+      isOpen={isVideoPlayerOpen}
+      onClose={() => setIsVideoPlayerOpen(false)}
+      videoUrl="https://vimeo.com/1106106331"
+      title="ASTRADE"
+    />
+    </>
   );
 };
 
