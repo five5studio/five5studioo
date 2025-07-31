@@ -15,10 +15,10 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ isOpen, onClose, videoUrl, ti
 
   // Convert YouTube URL to embed format
   const getEmbedUrl = (url: string) => {
-    // Handle Vimeo URLs
+    // Handle Vimeo URLs with custom iframe parameters
     if (url.includes('vimeo.com')) {
       const videoId = url.split('vimeo.com/')[1].split('?')[0];
-      return `https://player.vimeo.com/video/${videoId}?autoplay=1&title=0&byline=0&portrait=0`;
+      return `https://player.vimeo.com/video/${videoId}?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1`;
     }
     
     // Handle YouTube URLs
